@@ -18,12 +18,14 @@
 
     // Sticky Navbar
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 45) {
-            $('.navbar').addClass('sticky-top shadow-sm');
-            $('.navbar img').attr('src', 'img/logo/NewLogo1.png');
-        } else {
-            $('.navbar img').attr('src', 'img/logo/NewLogo.png');
-            $('.navbar').removeClass('sticky-top shadow-sm');
+        if ($(window).width() > 992) {
+            if ($(this).scrollTop() > 45) {
+                $('.navbar').addClass('sticky-top shadow-sm');
+                $('.navbar img').attr('src', 'img/logo/NewLogo1.png');
+            } else {
+                $('.navbar img').attr('src', 'img/logo/NewLogo.png');
+                $('.navbar').removeClass('sticky-top shadow-sm');
+            }
         }
     });
     
