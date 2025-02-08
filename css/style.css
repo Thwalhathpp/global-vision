@@ -769,12 +769,8 @@ h6,
     .carousel-image {
         width: 300px;
         height: 300px;
-        padding: 20px;
+        padding: 5px;
         margin-left: 0;
-    }
-    
-    .carousel-image img {
-        padding: 20px;
     }
 }
 
