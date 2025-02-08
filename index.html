@@ -85,9 +85,9 @@
 
     <!-- Navbar & Carousel Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0 ">
             <a href="index.html" class="navbar-brand p-0">
-                <img src="img/logo/NewLogo.png" alt="" srcset="" width="200px" height="70px">
+                <img src="img/logo/NewLogo1.png" alt="" srcset="" width="200px" height="70px">
                 <!-- <h1 class="m-0"><img src="img/title-icon.png" alt="" class="title"/>Global Vision</h1> -->
                 <!-- <h1 class="m-0"><img src="img/title-icon.png" alt="" class="title" />Global Vision</h1> -->
             </a>
@@ -126,7 +126,32 @@
         </nav>
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-container">
+                <div class="carousel-content">
+                    <div class="carousel-text">
+                        <h2 class="carousel-title">Transforming Ideas into Reality</h2>
+                        <p class="carousel-description">Borrowing money can be problematic. Instead, Even lets employees get access to their own wages that they've already earned, before payday, without added fees or interest.</p>
+                        <!-- <a href="#" class="learn-more-btn">Learn more</a> -->
+                    </div>
+                    <div class="carousel-image">
+                        <svg class="progress-ring" viewBox="0 0 520 520">
+                            <circle class="progress-background"
+                                cx="260" cy="260" r="250"
+                                stroke-dasharray="1571"
+                            />
+                            <circle class="progress-bar"
+                                cx="260" cy="260" r="250"
+                                stroke-dasharray="1571"
+                                style="animation: progress 5s linear infinite;"
+                            />
+                        </svg>
+                        <div class="image-wrapper">
+                            <img src="img/cerousel/carousel-6.jpg" alt="Mobile app interface" class="carousel-img active">
+                            <img src="" alt="Mobile app interface" class="carousel-img next">
+                        </div>
+                    </div>
+                </div>
+            <!-- <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="w-100" src="img/carousel-3.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
@@ -172,6 +197,19 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+<!--             
+            <div class="carousel-inner carousel-min-height">
+                <div class="carousel-container">
+                    <div class="carousel-text-content">
+                        <h1>Get paid early</h1>
+                        <p>Borrowing money can be problematic. Instead, Even lets employees get access to their own wages that they’ve already earned, before payday, without added fees or interest.</p>
+                        <a href="#" class="btn">Learn more</a>
+                    </div>
+                    <div class="image-content">
+                        <img src="your-image-url-here.png" alt="Mobile App Preview">
+                    </div>
+                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -180,7 +218,7 @@
             <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> -->
         </div>
     </div>
     <!-- Navbar & Carousel End -->
@@ -1029,6 +1067,93 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselContent = [
+                {
+                    image: 'img/cerousel/carousel-6.jpg',
+                    title: 'Get paid early',
+                    description: 'Borrowing money can be problematic. Instead, Even lets employees get access to their own wages that they ve already earned, before payday, without added fees or interest.'
+                },
+                {
+                    image: 'img/cerousel/carousel-2.png',
+                    title: 'Smart budgeting tools',
+                    description: 'Take control of your finances with our intuitive budgeting tools. Track expenses, set goals, and make informed financial decisions.'
+                },
+                {
+                    image: 'img/cerousel/carousel-3.png',
+                    title: 'Secure banking',
+                    description: 'Your money is safe with us. We use bank-level encryption and security measures to protect your financial information.'
+                },
+                {
+                    image: 'img/cerousel/carousel-1.jpeg',
+                    title: 'Instant transfers',
+                    description: 'Send and receive money instantly. No more waiting for days for your transactions to clear.'
+                }
+            ];
+            
+            const carouselImg = document.querySelector('.carousel-img');
+            const carouselTitle = document.querySelector('.carousel-title');
+            const carouselDescription = document.querySelector('.carousel-description');
+            const progressBar = document.querySelector('.progress-bar');
+            let currentIndex = 0;
+
+            function changeContent() {
+                currentIndex = (currentIndex + 1) % carouselContent.length;
+                const newContent = carouselContent[currentIndex];
+                
+                const currentImg = document.querySelector('.carousel-img.active');
+                const nextImg = document.querySelector('.carousel-img.next');
+                
+                // Prepare next image before animation
+                nextImg.style.animation = 'none';
+                nextImg.src = newContent.image;
+                
+                // Force reflow
+                void nextImg.offsetWidth;
+                
+                // Start transitions
+                currentImg.style.animation = 'rotate3dOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                nextImg.style.animation = 'rotate3dIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                
+                carouselTitle.classList.add('fade');
+                carouselDescription.classList.add('fade');
+                
+                // Update text and swap images after transition
+                setTimeout(() => {
+                    // Update text content
+                    carouselTitle.textContent = newContent.title;
+                    carouselDescription.textContent = newContent.description;
+                    
+                    // Reset image states
+                    currentImg.classList.remove('active');
+                    currentImg.classList.add('next');
+                    currentImg.style.animation = '';
+                    
+                    nextImg.classList.remove('next');
+                    nextImg.classList.add('active');
+                    nextImg.style.animation = '';
+                    
+                    // Show new text
+                    carouselTitle.classList.remove('fade');
+                    carouselDescription.classList.remove('fade');
+                    
+                    carouselTitle.classList.add('slide-in');
+                    carouselDescription.classList.add('slide-in');
+                    
+                    // Remove animation classes after completion
+                    setTimeout(() => {
+                        carouselTitle.classList.remove('slide-in');
+                        carouselDescription.classList.remove('slide-in');
+                    }, 500);
+                }, 800);
+            }
+
+            // Listen for animation end
+            progressBar.addEventListener('animationend', changeContent);
+            progressBar.addEventListener('animationiteration', changeContent);
+        });
+    </script>
 </body>
 
 </html>
